@@ -1,10 +1,10 @@
-{% extends 'master.html' %}
+{% extends 'jqm/simple.html' %}
 {# generic view of a form to be posted to the same URL from which it came parameters "title", "form", "submit" #}
 {% load i18n %}
 {% block title %}{{title}}{% endblock %}
 {% block content %}
 <form action="{{ request.path }}" data-ajax="false" method="POST">
-    {% include "formfields.html" %}
+    {% include "jqm/formfields.html" %}
     <input type="submit" value="{{ submit|default:'Update'}}" />
 </form>
 {% endblock %}
