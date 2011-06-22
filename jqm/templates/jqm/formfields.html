@@ -1,0 +1,18 @@
+{% load i18n %}
+{# generic form-field display template fragment #}
+{% csrf_token %}
+{{ form.non_field_errors }}
+
+{% for field in form.visible_fields %}
+    <div class="field-wrapper {% if field.required %}required{% endif %}">
+        {# Include the hidden fields in the form #}
+        {{ field.label_tag }} {{ field }}
+        {{ field.errors }}
+        {% if field.help_text %}
+            <button class="help-trigger hidden" title="{{field.help_text}}" data-icon="info"></button>
+        {% endif %}
+    </div>
+{% endfor %}
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{# make it possible to declare title with a single declaration in sub-templates (ick) #}
+{% block pagetitle %}{%block headertitle %}{% block title %}{% trans 'Title' %}{% endblock %}{% endblock %}{% endblock %}
