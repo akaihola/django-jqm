@@ -1,9 +1,10 @@
 {% if messages %}
-    <div class="ui-bar-c">
+    <div class="ui-bar ui-bar-c jqm-message-bar">
         <ul class="jqm-messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
     </div>
+    <div class="clear-both"></div>
 {% endif %}

@@ -9,7 +9,8 @@
         {{ field.label_tag }} {{ field }}
         {{ field.errors }}
         {% if field.help_text %}
-            <button class="help-trigger hidden" title="{{field.help_text}}" data-iconpos="notext" data-icon="info"></button>
+            <button class="help-trigger" data-iconpos="notext" data-icon="info"></button>
+            <div class="field-help hidden">{{field.help_text}}</div>
         {% endif %}
     </div>
 {% endfor %}

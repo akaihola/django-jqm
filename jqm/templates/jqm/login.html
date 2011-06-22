@@ -3,7 +3,7 @@
 {% block title %}{% trans 'Login' %}{% endblock %}
 {% block content %}
 <form action="{% url login %}" data-ajax="false" method="POST">
-    {% include "formfields.html" %}
+    {% include "jqm/formfields.html" %}
     <input type="submit" value="{% trans 'login' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
