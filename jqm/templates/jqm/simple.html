@@ -10,12 +10,12 @@
         {% if user.is_authenticated %}
             <a href="{% url logout %}" rel="external" class="ui-btn-right logout-button" data-icon="minus" title="Logout">Logout: {{ user.username }}</a>
         {% endif %}
+        {% include "jqm/messages.html" %}
     </div>
 {% endblock jqmheader %}
 
 {% block jqmcontent %}
     <div data-role="content">	
-        {% include "jqm/messages.html" %}
         {% block content %}Content
         {% endblock content %}
     </div>
