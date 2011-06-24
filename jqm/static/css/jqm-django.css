@@ -1,8 +1,38 @@
+.clear-both {
+    clear: both;
+}
+
 .jqm-message-bar {
     margin-top: -15px;
     margin-left: -15px;
     margin-right: -15px;
 }
-.clear-both {
-    clear: both;
+.jqm-messages {
+    list-style-type: none;
+}
+.jqm-messages .info, .jqm-messages .success {
+    color: black;
+    font-weight: normal;
+}
+.jqm-messages .warn {
+    color: blue;
+}
+.jqm-messages .error {
+    color: red;
+}
+
+.required label {
+    font-weight: bold;
+}
+.help-trigger {
+    vertical-align: baseline;
+}
+.field-wrapper {
+    padding-top: .25em;
+    padding-bottom: .25em;
+}
+.errorlist {
+    list-style-type: none;
+    color: #700000;
+    margin-top: 0;
 }

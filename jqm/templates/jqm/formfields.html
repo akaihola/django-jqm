@@ -4,14 +4,14 @@
 {{ form.non_field_errors }}
 
 {% for field in form.visible_fields %}
-    <div class="field-wrapper {% if field.required %}required{% endif %}">
+    <div class="field-wrapper {% if field.field.required %}required{% endif %}">
         {# Include the hidden fields in the form #}
         {{ field.label_tag }} {{ field }}
-        {{ field.errors }}
         {% if field.help_text %}
-            <button class="help-trigger" data-iconpos="notext" data-icon="info"></button>
+            <button data-role="none" href="#" class="help-trigger" data-iconpos="notext" data-icon="info">?</button>
             <div class="field-help hidden">{{field.help_text}}</div>
         {% endif %}
+        {{ field.errors }}
     </div>
 {% endfor %}
 {% for hidden in form.hidden_fields %}

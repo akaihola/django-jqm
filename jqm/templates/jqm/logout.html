@@ -1,0 +1,7 @@
+{% extends 'jqm/simple.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Logged Out' %}{% endblock %}
+{% block content %}
+<p>Your account has been logged out.</p>
+<p><a data-role="button" href="{% url login %}" rel="external">Log in again</a></p>
+{% endblock %}
