@@ -1,4 +1,28 @@
 {% extends 'jqm/v1_0_0b1.html' %}
 {% load i18n %}
-{# make it possible to declare title with a single declaration in sub-templates (ick) #}
-{% block pagetitle %}{%block headertitle %}{% block title %}{% trans 'Title' %}{% endblock %}{% endblock %}{% endblock %}
+
+{% block jqmheader %}
+    <div data-role="header">
+        <h1 class="display-title">
+            {% block pagetitle %}{% block title %}{% trans 'Title' %}{% endblock %}{% endblock %}
+        </h1>
+        {# logout control for django.contrib.auth #}
+        {% if user.is_authenticated %}
+            <a href="{% url logout %}" rel="external" class="ui-btn-right logout-button" data-icon="minus" title="Logout">Logout: {{ user.username }}</a>
+        {% endif %}
+    </div>
+{% endblock jqmheader %}
+
+{% block jqmcontent %}
+    <div data-role="content">	
+        {% include "jqm/messages.html" %}
+        {% block content %}Content
+        {% endblock content %}
+    </div>
+{% endblock jqmcontent %}
+
+{% block jqmfooter %}
+    <div data-role="footer">
+        {% block navmenu %}{% endblock %}
+    </div>
+{% endblock jqmfooter %}

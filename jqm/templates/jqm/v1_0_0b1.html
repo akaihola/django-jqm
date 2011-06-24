@@ -19,29 +19,16 @@
 <body> 
 
 <div data-role="page" class="django-jqm-page" {% if request %} data-url="{{request.path}}" {% endif %}>
-    <div data-role="header">
-        <h1 class="display-title">{% block headertitle %}Page Title{% endblock %}</h1>
-        {# logout control for django.contrib.auth #}
-        {% if user.is_authenticated %}
-            <a href="{% url logout %}" rel="external" class="ui-btn-right logout-button" data-icon="minus" title="Logout">Logout: {{ user.username }}</a>
-        {% endif %}
-    </div><!-- /header -->
-
-    <div data-role="content">	
-        {% include "jqm/messages.html" %}
-        {% block content %}
-        {% endblock %}
-    </div><!-- /content -->
-
-    <div data-role="footer">
-        {% block navmenu %}{% endblock %}
-    </div>
-    {% block extrascripts %}
+    {% block jqmheader %}{% endblock %}
+    {% block jqmcontent %}{% endblock %}
+    {% block jqmfooter %}{% endblock %}
+    
+    {% block jqmscripts %}
+        {# block for scripts which are specific to a given "page", note: they will still be loaded in the same page as everything else, they'll just get loaded later #}
     {% endblock %}
 </div><!-- /page -->
-
 {% block sitescripts %}
-    <script type="text/javascript" src="/static/js/site.js"></script>
+{# block for scripts to be used for all pages on the site #}
 {% endblock %}
 </body>
 </html>
