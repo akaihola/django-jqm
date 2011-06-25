@@ -21,7 +21,7 @@ if __name__ == "__main__":
         author = 'Mike C. Fletcher',
         author_email = 'mcfletch@vrplumber.com',
         license = "MIT",
-        url = '',
+        url = 'https://launchpad.net/django-jqm',
         packages = ['jqm'],
         package_dir = {
             'jqm':'jqm',
