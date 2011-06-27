@@ -31,3 +31,10 @@
     color: #700000;
     margin-top: 0;
 }
+
+/* collapse the logout button at smaller sizes */
+@media (max-width:400px) {
+    .logout-wide {
+        display: none;
+    }
+}

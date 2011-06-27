@@ -23,7 +23,7 @@ Project setup (for an Ubuntu Server or Debian Host), obviously you'll need to be
 VirtualEnv Setup
 ----------------
 
-Set up a virtualenv with django-html, django-jqm, and, of course, django::
+Set up a virtualenv with django-html5, django-jqm, and, of course, django::
 
     $ virtualenv jqm-tutorial
     $ source jqm-tutorial/bin/activate
@@ -34,7 +34,7 @@ Set up a virtualenv with django-html, django-jqm, and, of course, django::
 Project Setup
 -------------
 
-At this point you should have a virtualenv with django installed, so let's create a very basic project::
+At this point you should have a virtualenv with Django installed, so let's create a very basic project::
 
     $ django-admin.py startproject tutorial
 
@@ -61,15 +61,11 @@ A directory for our project-level templates::
         os.path.abspath( os.path.dirname( __file__ )),
         'templates',
     ])
-
     TEMPLATE_DIRS = (
-        # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-        # Always use forward slashes, even on Windows.
-        # Don't forget to use absolute paths, not relative paths.
         TEMPLATE_DIR,
     )
     
-Common context processors (note, only request is actually required by django-jqm)::
+Common context processors (note, only auth, static and request are actually required by django-jqm)::
 
     TEMPLATE_CONTEXT_PROCESSORS = [
         "django.core.context_processors.auth", 
@@ -87,8 +83,8 @@ Finally, provide a default landing-page URL for post-login views::
 
     LOGIN_REDIRECT_URL = '/'
 
-Generic View
-============
+Basic View (with Login/Logout)
+==============================
 
 We have now completed our project setup, the next step is to actually use JQuery Mobile to create some views.  The jqm project simply provides a number of templates that can be used to quickly get your jqm site up and running with the content-distribution-network hosted jqm sources.  These templates are fairly basic in their design, they use the default jqm styles to produce a generic layout.
 
@@ -121,6 +117,8 @@ Our first view will be a fairly generic landing page with a bit of text and a "c
         
     )
 
+Pay particular attention to the names used, the `django-jqm` templates use named url references for generating login/logout buttons and the like.  The actual views used are the built-in login/logout views from the django `auth` framework.
+    
 And then we will add the home view to our views module (we could, instead, use a generic view here, but you are likely going to want to customize this view later)::
 
     from django.shortcuts import render_to_response
@@ -137,7 +135,7 @@ And create the templates folder for our project templates::
 
     $ mkdir tutorial/templates
 
-our view is just rendering the template `index.html` which extends the `jqm/simple.html` base template::
+our view is currently just rendering the template `index.html` which extends the `jqm/simple.html` base template::
 
     {% extends "jqm/simple.html" %}
     {% block title %}A Landing Page{% endblock %}
@@ -149,6 +147,30 @@ our view is just rendering the template `index.html` which extends the `jqm/simp
         <p>Contratulations on logging in, we love visitors, but we currently have nothing to show you!</p>
     {% endif %}
     {% endblock %}
+
+At this point, we can run our development server::
+
+    $ DJANGO_SETTINGS_MODULE=tutorial.settings django-admin.py runserver 0:8080
+
+and check out the web-site at::
+
+    http://localhost:8080/
+
+where we can see this (approximately):
+
+.. image:: images/generic-page1.png
+
+.. image:: images/generic-page2.png
+
+.. image:: images/generic-page3.png
+
+.. image:: images/generic-page4.png
+
+You will note that the page transition from the call to arms page and the initial login page is a "slide" animation (the default for JQuery Mobile), while the transition on submitting from the login page is a regular web-page reload.  This is because the login page, as with most form-handling pages, uses a redirct-on-success operation.  JQuery Mobile currently does not have a way to handle a redirected form properly, so our login template tells the login form to use regular page-loading rather than a JQuery Mobile brokered AJAX submission of the form content.
+
+You will also note that the logout button shows/hides the "Logout:" text as the window is wider/narrower.  This is done with a `CSS Media Query`_.  You will need to understand those to be able to customize your mobile web-apps.
+
+.. _`CSS Media Query`: http://www.w3.org/TR/css3-mediaqueries/
 
 Indices and tables
 ==================
