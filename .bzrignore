@@ -1,3 +1,5 @@
 *.e4?
 .eric4project
 *.egg-info
+dist
+doc/_build
