@@ -1,0 +1,2 @@
+recursive-include jqm/static *
+recursive-include jqm/templates *
