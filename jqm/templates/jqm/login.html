@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans 'Log In' %}{% endblock %}
 {% block content %}
-<form action="{% url login %}" data-ajax="false" method="POST">
+<form action="{% url "login" %}" data-ajax="false" method="POST">
     {% include "jqm/formfields.html" %}
     <input type="submit" value="{% trans 'Log In' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
