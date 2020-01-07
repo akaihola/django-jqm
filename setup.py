@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-jqm',
-    version='1.1.0',
+    version='1.1.0.2',
     description='Pluggable JQuery Mobile templates for Django',
     author='Mike C. Fletcher',
     author_email='mcfletch@vrplumber.com',
